@@ -18,14 +18,15 @@ function NodeTree(props) {
 
     const searchNode = (event) => {
         if(!event.target.value) return;
-        console.dir(findData(nodes, event.target.value));
+        // console.dir(findData(nodes, event.target.value));
     };
 
     const recursiveMap = (items, level) => {
         return items.map((item, index) => {
             return (<li key={level+index}>
-                <h3 className={"h6" + (item?.name === selectedNode?.name ? ' text-info' : '')} role="button" data-depth={level} onClick={selectNode_}>{item.name}</h3>
-                { item.children ? (<ul>{recursiveMap(item.children, level+1)}</ul>) : null }
+                <h3 className={"h6" + (item.name === selectedNode?.name ? ' text-info' : '')} role="button" data-depth={level} onClick={selectNode_}>{item.name}</h3>
+                {item.children ? (<ul>{recursiveMap(item.children, level+1)}</ul>) : ''}
+                {/*className={(level === 0 || item.name === selectedNode?.name) ? '' : 'd-none'}*/}
             </li>)
         });
     }
@@ -33,9 +34,9 @@ function NodeTree(props) {
     return (
         <div className="text-white">
             <input className="rounded-2 border-0 bg-secondary form-control mb-3" type="text" placeholder="Search node" onChange={searchNode} />
-            { nodes ? <ul key="0">
+            {nodes ? <ul key="0">
                 {recursiveMap(nodes, 0)}
-            </ul> : "" }
+            </ul> : ''}
         </div>
     );
 }

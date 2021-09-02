@@ -3,3 +3,15 @@ body,
 #root {
     height: 100%;
 }
+input[type='text'].bg-secondary::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #bfbfbf;
+    opacity: 1; /* Firefox */
+}
+
+input[type='text'].bg-secondary:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #bfbfbf;
+}
+
+input[type='text'].bg-secondary::-ms-input-placeholder { /* Microsoft Edge */
+    color: #bfbfbf;
+}
